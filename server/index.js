@@ -21,6 +21,11 @@ app.post("/contacts", async (req,res) => {
     }
 })
 
+app.get("/contacts", async (req,res) => {
+    const [results] = await db.query(`SELECT * FROM contacts`);
+    res.status(200).send(results);
+})
+
 mysql.createConnection({
     host:"localhost",
     user:"root",
